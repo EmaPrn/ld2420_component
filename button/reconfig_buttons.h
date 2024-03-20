@@ -1,42 +1,48 @@
 #pragma once
 
 #include "esphome/components/button/button.h"
-#include "../ld2420.h"
+#include "../ld2420e.h"
 
-namespace esphome {
-namespace ld2420 {
+namespace esphome
+{
+  namespace ld2420e
+  {
 
-class LD2420ApplyConfigButton : public button::Button, public Parented<LD2420Component> {
- public:
-  LD2420ApplyConfigButton() = default;
+    class LD2420EApplyConfigButton : public button::Button, public Parented<LD2420EComponent>
+    {
+    public:
+      LD2420EApplyConfigButton() = default;
 
- protected:
-  void press_action() override;
-};
+    protected:
+      void press_action() override;
+    };
 
-class LD2420RevertConfigButton : public button::Button, public Parented<LD2420Component> {
- public:
-  LD2420RevertConfigButton() = default;
+    class LD2420ERevertConfigButton : public button::Button, public Parented<LD2420EComponent>
+    {
+    public:
+      LD2420ERevertConfigButton() = default;
 
- protected:
-  void press_action() override;
-};
+    protected:
+      void press_action() override;
+    };
 
-class LD2420RestartModuleButton : public button::Button, public Parented<LD2420Component> {
- public:
-  LD2420RestartModuleButton() = default;
+    class LD2420ERestartModuleButton : public button::Button, public Parented<LD2420EComponent>
+    {
+    public:
+      LD2420ERestartModuleButton() = default;
 
- protected:
-  void press_action() override;
-};
+    protected:
+      void press_action() override;
+    };
 
-class LD2420FactoryResetButton : public button::Button, public Parented<LD2420Component> {
- public:
-  LD2420FactoryResetButton() = default;
+    class LD2420EFactoryResetButton : public button::Button, public Parented<LD2420EComponent>
+    {
+    public:
+      LD2420EFactoryResetButton() = default;
 
- protected:
-  void press_action() override;
-};
+    protected:
+      void press_action() override;
+    };
 
-}  // namespace ld2420
-}  // namespace esphome
+  } // namespace ld2420e
+} // namespace esphome

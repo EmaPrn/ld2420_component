@@ -7,10 +7,10 @@ from esphome.const import (
     ICON_CHIP,
 )
 
-from .. import ld2420_ns, LD2420Component, CONF_LD2420_ID
+from .. import ld2420e_ns, LD2420EComponent, CONF_LD2420E_ID
 
-LD2420TextSensor = ld2420_ns.class_(
-    "LD2420TextSensor", text_sensor.TextSensor, cg.Component
+LD2420ETextSensor = ld2420e_ns.class_(
+    "LD2420ETextSensor", text_sensor.TextSensor, cg.Component
 )
 
 CONF_FW_VERSION = "fw_version"
@@ -18,8 +18,8 @@ CONF_FW_VERSION = "fw_version"
 CONFIG_SCHEMA = cv.All(
     cv.COMPONENT_SCHEMA.extend(
         {
-            cv.GenerateID(): cv.declare_id(LD2420TextSensor),
-            cv.GenerateID(CONF_LD2420_ID): cv.use_id(LD2420Component),
+            cv.GenerateID(): cv.declare_id(LD2420ETextSensor),
+            cv.GenerateID(CONF_LD2420E_ID): cv.use_id(LD2420EComponent),
             cv.Optional(CONF_FW_VERSION): text_sensor.text_sensor_schema(
                 entity_category=ENTITY_CATEGORY_DIAGNOSTIC, icon=ICON_CHIP
             ),
@@ -34,5 +34,5 @@ async def to_code(config):
     if CONF_FW_VERSION in config:
         sens = await text_sensor.new_text_sensor(config[CONF_FW_VERSION])
         cg.add(var.set_fw_version_text_sensor(sens))
-    ld2420 = await cg.get_variable(config[CONF_LD2420_ID])
-    cg.add(ld2420.register_listener(var))
+    ld2420e = await cg.get_variable(config[CONF_LD2420E_ID])
+    cg.add(ld2420e.register_listener(var))

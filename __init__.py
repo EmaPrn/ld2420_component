@@ -9,15 +9,15 @@ DEPENDENCIES = ["uart"]
 
 MULTI_CONF = True
 
-ld2420_ns = cg.esphome_ns.namespace("ld2420")
-LD2420Component = ld2420_ns.class_("LD2420Component", cg.Component, uart.UARTDevice)
+ld2420e_ns = cg.esphome_ns.namespace("ld2420e")
+LD2420EComponent = ld2420e_ns.class_("LD2420EComponent", cg.Component, uart.UARTDevice)
 
-CONF_LD2420_ID = "ld2420_id"
+CONF_LD2420E_ID = "ld2420e_id"
 
 CONFIG_SCHEMA = cv.All(
     cv.Schema(
         {
-            cv.GenerateID(): cv.declare_id(LD2420Component),
+            cv.GenerateID(): cv.declare_id(LD2420EComponent),
         }
     )
     .extend(uart.UART_DEVICE_SCHEMA)
@@ -25,7 +25,7 @@ CONFIG_SCHEMA = cv.All(
 )
 
 FINAL_VALIDATE_SCHEMA = uart.final_validate_device_schema(
-    "ld2420_uart",
+    "ld2420e_uart",
     require_tx=True,
     require_rx=True,
     parity="NONE",
